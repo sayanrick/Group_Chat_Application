@@ -15,10 +15,18 @@ async function signup(e) {
 
         if (response.status === 201) {
             console.log("Signed up Successfully...");
+            // Display a success alert
+            alert("Successfully signed up");
+        }
+        else if (response.status === 409) {
+            console.log("User already exists, Please Login");
+
+            alert("User already exists, Please Login");
         } else {
             throw new Error('Failed to signup');
         }
     } catch (err) {
+        console.error(err);
         document.body.innerHTML += `<div style="color:red;"> ${err.message} </div>`;
     }
 }
